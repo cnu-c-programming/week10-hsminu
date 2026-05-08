@@ -17,6 +17,6 @@ int main() {
     some_file.rights.read=1;
     some_file.rights.write=0;
     some_file.rights.execute=1;
-    printf("%u\n", some_file.int_value);
+    printf("current mode: %u\n", some_file.int_value);
 
 }

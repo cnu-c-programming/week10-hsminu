@@ -41,10 +41,10 @@ void delete(struct SList *list, char name[]){
     }
     for(struct Node *p = list->head; p != NULL; p = p->next){
         if (strcmp(p->next->name, name) == 0) {
-            p->next = p->next->next;
-
-            free(p->next);
-            break;
+            struct Node *temp = p->next;
+            p->next = temp->next;
+            free(temp);
+            return;
         }
     }
 }
@@ -82,5 +82,7 @@ int main() {
             print(list);
         }
     }
+
+    free(list);
     
 }
