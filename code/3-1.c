@@ -55,6 +55,18 @@ void print(struct SList *list){
     }
 }
 
+void free_list(struct SList *list) {
+    struct Node *p = list->head;
+
+    while (p != NULL) {
+        struct Node *temp = p->next;
+        free(p);
+        p = temp;
+    }
+
+    list->head = NULL;
+}
+
 int main() {
     struct SList *list = malloc(sizeof(struct SList));
     list->head = NULL;
@@ -67,6 +79,7 @@ int main() {
         scanf("%s", input);
         
         if (strcmp(input, "quit") == 0) {
+            free_list(list);
             break;
         }
 
